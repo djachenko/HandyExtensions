@@ -1,44 +1,38 @@
 #import "UIViewWithNib.h"
 
-@interface UIViewWithNib ()
-
-- (void)initializeWithFrame:(CGRect)frame;
-
-@end
-
 @implementation UIViewWithNib
 
 - (instancetype)init {
     self = [super initWithFrame:CGRectZero];
 
     if (self) {
-        [self initializeWithFrame:CGRectZero];
+        [self innerInitialize];
     }
 
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    
+
     if (self) {
-        [self initializeWithFrame:frame];
+        [self innerInitialize];
     }
 
     return self;
 }
 
-- (id)initWithCoder:(NSCoder*)aDecoder {
+- (instancetype)initWithCoder:(NSCoder*)aDecoder {
     self = [super initWithCoder:aDecoder];
-    
+
     if (self) {
-        [self initializeWithFrame:CGRectZero];
+        [self innerInitialize];
     }
 
     return self;
 }
 
-- (void)initializeWithFrame:(CGRect)frame {
+- (void)innerInitialize {
     NSString *nibName = NSStringFromClass([self class]);
 
     NSString *stringWithoutNamespace = [nibName componentsSeparatedByString:@"."].lastObject;
@@ -46,12 +40,21 @@
     NSLog(@"nib name: %@", stringWithoutNamespace);
 
     UIView *nibRoot = [[[NSBundle bundleForClass:[self class]] loadNibNamed:stringWithoutNamespace
-                                                                   owner:self
-                                                                 options:nil] firstObject];
+                                                                      owner:self
+                                                                    options:nil] firstObject];
 
-    self.bounds = nibRoot.bounds;
-    self.frame = nibRoot.frame;
+    if (!self.fitInnerToOuter) {
+        self.bounds = nibRoot.bounds;
+        self.frame = nibRoot.frame;
+    }
+    else {
+        nibRoot.bounds = self.bounds;
+        nibRoot.frame = self.bounds;
+    }
+
     self.opaque = nibRoot.opaque;
+    self.backgroundColor = UIColor.clearColor;
+
 
     [self addSubview:nibRoot];
 

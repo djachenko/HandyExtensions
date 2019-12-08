@@ -15,6 +15,8 @@
 
 + (NSArray *)arrayWithSize:(NSUInteger)size andGenerator:(id (^)(NSUInteger index))generator;
 
++ (NSArray *)arrayWithRepeating:(id)object times:(NSUInteger)count;
+
 - (NSArray *)reversedArray;
 
 - (NSArray *)forEachItem:(void(^)(id item, NSUInteger index, BOOL *needBreak))block;

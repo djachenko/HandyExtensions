@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface UIView (CustomInitialization)
+@interface UIView (NibLoading)
 
 + (instancetype)viewBySelfNib;
 

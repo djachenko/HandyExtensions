@@ -2,4 +2,6 @@
 
 @interface UIViewWithNib : UIView
 
+@property (nonatomic) BOOL fitInnerToOuter;
+
 @end

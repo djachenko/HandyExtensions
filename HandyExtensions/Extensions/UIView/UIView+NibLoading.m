@@ -1,6 +1,6 @@
-#import "UIView+CustomInitialization.h"
+#import "UIView+NibLoading.h"
 
-@implementation UIView (CustomInitialization)
+@implementation UIView (NibLoading)
 
 + (instancetype)viewBySelfNib {
 	NSString *classNameWithModule = NSStringFromClass(self);

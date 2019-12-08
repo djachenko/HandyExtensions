@@ -83,6 +83,16 @@
 	return mutableArray;
 }
 
++ (NSArray *)arrayWithRepeating:(id)object times:(NSUInteger)count {
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:count];
+
+    for (NSUInteger i = 0; i < count; ++i) {
+        [array addObject:object];
+    }
+
+    return array;
+}
+
 - (NSArray *)reversedArray {
 	if (self.count == 0) {
 		return @[];
