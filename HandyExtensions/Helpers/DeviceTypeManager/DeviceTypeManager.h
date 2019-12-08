@@ -1,13 +1,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-BOOL iPad();
-BOOL iPadPro();
-BOOL iPhone4s();
-BOOL iPhone5();
-BOOL iPhone6P();
-BOOL iPhone6();
-BOOL iPhoneX();
-CGFloat deviceWidth();
-CGFloat deviceHeight();
-CGFloat viewWidth();
+BOOL iPad(void);
+BOOL iPadPro(void);
+BOOL iPhone4s(void);
+BOOL iPhone5(void);
+BOOL iPhone6P(void);
+BOOL iPhone6(void);
+BOOL iPhoneX(void);
+CGFloat deviceWidth(void);
+CGFloat deviceHeight(void);
+CGFloat viewWidth(void);

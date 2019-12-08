@@ -2,10 +2,10 @@
 
 @interface UIView (CustomInitialization)
 
-+ (id)viewBySelfNib;
++ (instancetype)viewBySelfNib;
 
-+ (id)viewByNibName:(NSString *)nibName;
++ (instancetype)viewByNibName:(NSString *)nibName;
 
-+ (id)landscapeViewBySelfNib;
++ (instancetype)landscapeViewBySelfNib;
 
 @end

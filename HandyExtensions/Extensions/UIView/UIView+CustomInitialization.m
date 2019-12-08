@@ -2,11 +2,14 @@
 
 @implementation UIView (CustomInitialization)
 
-+ (id)viewBySelfNib {
-	return [self viewByNibName:NSStringFromClass(self)];
++ (instancetype)viewBySelfNib {
+	NSString *classNameWithModule = NSStringFromClass(self);
+	NSString *classNameWithoutModule = [classNameWithModule componentsSeparatedByString:@"."].lastObject;
+
+	return [self viewByNibName:classNameWithoutModule];
 }
 
-+ (id)viewByNibName:(NSString *)nibName {
++ (instancetype)viewByNibName:(NSString *)nibName {
 	NSArray *objects = [[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil];
 
 	for (id object in objects) {
@@ -18,7 +21,7 @@
 	return nil;
 }
 
-+ (id)landscapeViewBySelfNib {
++ (instancetype)landscapeViewBySelfNib {
 	return [self viewByNibName:[NSString stringWithFormat:@"%@Landscape", NSStringFromClass(self)]];
 }
 
