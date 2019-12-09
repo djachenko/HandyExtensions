@@ -2,9 +2,13 @@
 #import "CGSize+Extensions.h"
 
 
-CGSize CGSizeScale(CGSize source, CGFloat factor) {
+CGSize CGSizeScaled(CGSize source, CGFloat factor) {
     source.width *= factor;
     source.height *= factor;
 
     return source;
+}
+
+CGSize CGSizeTransposed(CGSize inner) {
+    return CGSizeMake(inner.height, inner.width);
 }
