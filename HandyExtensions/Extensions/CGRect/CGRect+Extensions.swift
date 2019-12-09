@@ -10,6 +10,14 @@ extension CGRect {
         )
     }
 
+    init(centerX: CGFloat, centerY: CGFloat, width: CGFloat, height: CGFloat) {
+        self.init(x: -width / 2 + centerX, y: -height / 2 + centerY, width: width, height: height)
+    }
+
+    init(center: CGPoint, width: CGFloat, height: CGFloat) {
+        self.init(centerX: center.x, centerY: center.y, width: width, height: height)
+    }
+
     func scaled(by scale: CGFloat, anchor: CGPoint = .zero) -> CGRect {
         let newOrigin = CGPoint(
                 x: (origin.x - anchor.x) * scale + anchor.x,
